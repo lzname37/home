@@ -1,8 +1,10 @@
 <template>
   <div class="weather" v-if="weatherData.adCode.city && weatherData.weather.weather">
+    <span v-if="!mainKey">{{ weatherData.adCode.region }}&nbsp;</span>
     <span>{{ weatherData.adCode.city }}&nbsp;</span>
     <span>{{ weatherData.weather.weather }}&nbsp;</span>
     <span>{{ weatherData.weather.temperature }}℃</span>
+<!--
     <span class="sm-hidden">
       &nbsp;{{
         weatherData.weather.winddirection?.endsWith("风")
@@ -11,11 +13,26 @@
       }}&nbsp;
     </span>
     <span class="sm-hidden">{{ weatherData.weather.windpower }}&nbsp;级</span>
+-->
+    <template v-if="mainKey">
+    <span class="sm-hidden">
+        &nbsp;{{
+            weatherData.weather.winddirection?.endsWith("风")
+            ? weatherData.weather.winddirection
+            : weatherData.weather.winddirection + "风"
+        }}&nbsp;
+    </span>
+    <span class="sm-hidden">{{ weatherData.weather.windpower }}&nbsp;级</span>
+    </template>
   </div>
   <div class="weather" v-else>
     <span>天气数据获取失败</span>
   </div>
 </template>
+
+
+
+
 
 <script setup>
 import { getAdcode, getWeather, getOtherWeather } from "@/api";
@@ -55,6 +72,8 @@ const getWeatherData = async () => {
   try {
     // 获取地理位置信息
     if (!mainKey) {
+      
+/*
       console.log("未配置，使用备用天气接口");
       const result = await getOtherWeather();
       console.log(result);
@@ -69,6 +88,36 @@ const getWeatherData = async () => {
         winddirection: data.condition.day_wind_direction,
         windpower: data.condition.day_wind_power,
       };
+*/
+
+      console.log("未配置，使用备用天气接口");
+      const result = await getOtherWeather();
+      console.log(result);
+      const data = result;  // 不需要 .result 了，因为数据在顶层
+      
+      weatherData.adCode = {
+          city: data.location?.city || "未知地区",
+          // 如果需要 region 也可以加上
+          region: data.location?.region
+      };
+      
+      weatherData.weather = {
+          weather: data.current?.description,        // 天气描述
+          temperature: data.current?.temperature,     // 温度
+          // 如果需要体感温度
+          // feelsLike: data.current?.feelsLike,
+          
+          // 如果新的数据结构中没有风向和风力数据，可以设置默认值
+          //winddirection: "暂无数据",
+          //windpower: "暂无数据",
+          
+          // 如果需要添加空气质量信息
+          //airQuality: {
+          //  category: data.current?.airQuality?.category,
+          //  statement: data.current?.airQuality?.statement
+          //}
+      };
+
     } else {
       // 获取 Adcode
       const adCode = await getAdcode(mainKey);

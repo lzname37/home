@@ -101,12 +101,12 @@ watch(
     }
     .name {
       width: 100%;
-      padding-left: 22px;
+      padding-left: 52px;
       transform: translateY(-8px);
       font-family: "Pacifico-Regular";
 
       .bg {
-        font-size: 5rem;
+        font-size: 6rem;
       }
 
       .sm {
@@ -141,7 +141,7 @@ watch(
     animation: fade 0.5s;
 
     .content {
-      display: flex;
+      display: flex;      
       justify-content: space-between;
 
       .text {
@@ -153,6 +153,10 @@ watch(
         p {
           &:nth-of-type(1) {
             font-family: "Pacifico-Regular";
+            font-size: 1.8rem;
+          }
+          &:nth-of-type(2) {
+            font-family: "LXGWWenKaiTC-Regular";
           }
         }
       }

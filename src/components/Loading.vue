@@ -6,7 +6,7 @@
         <span class="name">
           {{ siteName }}
         </span>
-        <span class="tip"> 加载中 </span>
+        <span class="tip"> 客官稍等 ~ </span>
       </div>
     </div>
     <div class="loader-section section-left" />
@@ -60,7 +60,7 @@ const siteName = import.meta.env.VITE_SITE_NAME;
         bottom: 5px;
         border-radius: 50%;
         border: 3px solid transparent;
-        border-top-color: #a4a4a4;
+        border-top-color:rgb(164, 35, 138);
         animation: spin-reverse 0.6s linear infinite;
       }
 

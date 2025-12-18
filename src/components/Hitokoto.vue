@@ -82,6 +82,7 @@ onMounted(() => {
   height: 100%;
   padding: 20px;
   animation: fade 0.5s;
+  // font-family: "LXGWWenKaiTC-Regular";
   .open-music {
     width: 100%;
     position: absolute;

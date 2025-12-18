@@ -57,8 +57,8 @@ onBeforeUnmount(() => {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 0.2rem 0 1.5rem;
-    font-size: 1.1rem;
+    margin: -0.2rem 0 1.5rem;
+    font-size: 1rem;
     .i-icon {
       display: flex;
       justify-content: center;
