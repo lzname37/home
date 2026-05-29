@@ -2,12 +2,12 @@
   {
     "icon": "Blog",
     "name": "博客",
-    "link": "https://me.iftcblog.me/"
+    "link": "https://langminjeii.ifantic.de/"
   },
   {
     "icon": "Cloud",
-    "name": "文件快递柜",
-    "link": "https://file.ifantic.me/#/"
+    "name": "画图",
+    "link": "https://iodraw2.vercel.app/"
   },
   {
     "icon": "CompactDisc",
@@ -25,8 +25,8 @@
     "link": "https://cloudpaste.ifantic.de/"
   },
   {
-    "icon": "TempEmail",
-    "name": "CF临时邮件",
+    "icon": "LaptopCode",
+    "name": "CF临时邮箱",
     "link": "https://cfmail.ifantic.de/"
   }
 ]
